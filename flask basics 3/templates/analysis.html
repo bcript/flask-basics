@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Text Analysis</title>
+</head>
+<body>
+	<h1>Text: {{ text }}</h1>
+	<hr>
+	<p>Length of string: {{ len }}</p>
+	<p>Number of digits: {{ num_digits }}</p>
+	<p>Number of vowels: {{num_vowels }}</p>
+	<p>Frequency of letters:</p>
+	<ul>
+		{% for char, freq in letter_freq.items() %}	
+			{% if char == ' ' %}
+				<li>Space character is present.</li>
+			{% else %}
+			
+				{% if freq == 1 %}
+					<li>{{ char }} appeared once.</li>
+				{% else %}
+					<li> {{ char }} appeared {{ freq }} times.</li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</ul>
+</body>
+</html>
