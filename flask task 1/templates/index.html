@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Contact</title>
+	<link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h1>Contact Management</h1>
+	<h2>Add New Contact</h2>
+	<form method='POST'>
+		<label for='name'>Contact Name:</label>
+		<input type='text' id='name' name='name'><br><br>
+		<label for='number'>Handphone Number:</label>
+		<input type='number' id='number' name='number'><br><br>
+		<label for='email'>Email:</label>
+		<input type='email' id='email' name='email'><br><br>
+		<input type='submit' id='add_contact' name='add_contact' value='Add Contact'>
+	</form>
+	<h2>Existing Contacts</h2>
+	{% if contacts == [] %}
+		<p>Currently you do not have any contacts.</p>
+	{% else %}
+		{% for contact in contacts %}
+			<p><strong>{{ contact['name'] }}</strong></p>
+			<ul>
+				<li>Handphone Number: {{ contact['number'] }}</li>
+				<li>Email: {{ contact['email'] }}</li>
+				<input type='submit' id='delete_contact' name='delete_contact' value='Delete Contact'>
+				<br><br>
+			</ul>
+		{% endfor %}
+	{% endif %}
+	
+</body>
+</html>
